@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/
+apps/
+manage.py
+requeriments.txt
+shopping91/
+templates/
+venv/
