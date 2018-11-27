@@ -36,6 +36,8 @@ CUSTOM_APPS = [
 ]
 
 INSTALLED_APPS = SYS_APPS + EXT_APPS + CUSTOM_APPS
+
+
 #  ========================中间注册 ========================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -77,7 +79,8 @@ DATABASES = {
         'NAME': '91gou',
         'USER': 'root',
         'PASSWORD': 'root',
-        'HOST': '112.74.42.138',
+        # 'HOST': '112.74.42.138',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }

@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<div class="swiper-container">
+    <!--轮播图主题部分-->
+    <div class="swiper-wrapper">
+        {% for banner in banner_list %}
+            <div class="swiper-slide">
+                <a href="">
+                    <img src="{% static banner.image %}" alt="">
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <!--添加小圆点-->
+    <div class="swiper-pagination"></div>
+    <!--导航箭头-->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
