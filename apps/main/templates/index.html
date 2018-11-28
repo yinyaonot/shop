@@ -1,8 +1,10 @@
 {% extends 'base/base.html' %}
 {% load staticfiles %}
+{% load cache %}
 {% block title %}
     首页
 {% endblock %}
+
 {% block page_css %}
     <link rel="stylesheet" href="{% static 'css/swiper.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
@@ -11,21 +13,53 @@
 
 {% block page_jq %}
     <script type="text/javascript" src="{% static 'js/jquery3.3.1.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/banner.js' %}"></script>
+    {#    <script type="text/javascript" src="{% static 'js/banner.js' %}"></script>#}
+    {#        <script type="text/javascript">#}
+    {#            $(function () {#}
+    {#                let swiper = new Swiper('.swiper-container', {#}
+    {#                    spaceBetween: 30,#}
+    {#                    loop: true,#}
+    {#                    centeredSlides: true,#}
+    {#                    autoplay: {#}
+    {#                        delay: 1000,#}
+    {#                        disableOnInteraction: false,#}
+    {#                    },#}
+    {#                    pagination: {#}
+    {#                        el: '.swiper-pagination',#}
+    {#                        clickable: true,#}
+    {#                    },#}
+    {#                    navigation: {#}
+    {#                        nextEl: 'swiper-button-next',#}
+    {#                        prevEl: '.swiper-button-prev',#}
+    {#                    },#}
+    {#                });#}
+    {#            })#}
+    {#        </script>#}
 {% endblock %}
 
 {% block page_head %}
     {#    顶部栏#}
     {% include 'include/common/top.html' %}
     {#    logo图标#}
-    {% include 'include/logo.html' %}
+    {% include 'include/logo_search.html' %}
+    {#    {% include 'search.html' %}#}
+    <br>
     {#    导航栏#}
     {% include 'include/navigation.html' %}
-    {#    分类,轮播图#}
-    <div id="cate_banner">
-         分类
+    <div style="margin-top: 100px;">
+        {#    分类,轮播图#}
         {% include 'include/cate.html' %}
-         轮播图
         {% include 'include/banner.html' %}
     </div>
+
+
+{% endblock %}
+{% block page_content %}
+    {% cache 3600 'head' %}
+        {% if shops_search %}
+            {% include 'search.html' %}
+        {% else %}
+            {% include 'include/content.html' %}
+        {% endif %}
+    {% endcache %}
 {% endblock %}

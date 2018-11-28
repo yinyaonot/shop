@@ -7,6 +7,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 sys.path.insert(0, os.path.join(BASE_DIR, 'apps'))
 
+AUTH_USER_MODEL='main.User'
+
+
 # 加密秘钥
 SECRET_KEY = '4i4o+f=f=n^om&*u%956_!@4!bhwn^%_bep*%*451s(e!=09+0'
 # 开发模式(上线设置为False)
@@ -24,6 +27,11 @@ SYS_APPS = ['django.contrib.admin',
 # 第三方的模块注册
 EXT_APPS = [
     # 'bootstrap3'
+    # 必要组件两个
+    'xadmin',
+    'crispy_forms',
+    # 非必要组件,更改样式
+    'reversion',
 ]
 
 # 自定义功能模块注册
@@ -76,7 +84,7 @@ DATABASES = {
     # 默认数据配置(可以配置多个)
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '91gou',
+        'NAME': 'shopping',
         'USER': 'root',
         'PASSWORD': 'root',
         # 'HOST': '112.74.42.138',
